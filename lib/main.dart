@@ -28,6 +28,20 @@ class CounterCubit extends Cubit<int> {
   void kurangData() {
     emit(state - 1);
   }
+
+  // bloc punya fitur untuk memantau data
+  @override
+  void onChange(Change<int> change) {
+    super.onChange(change);
+    print(change);
+  }
+
+  // bloc punya fitur untuk memantau error
+  @override
+  void onError(Object error, StackTrace stackTrace) {
+    super.onError(error, stackTrace);
+    print(error);
+  }
 }
 
 class HomePage extends StatelessWidget {

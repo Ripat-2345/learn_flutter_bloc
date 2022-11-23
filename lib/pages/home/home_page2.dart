@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:learn_flutter_bloc/bloc/counter.dart';
+
+import 'data_widget.dart';
 
 class HomePage2 extends StatelessWidget {
-  const HomePage2({Key? key}) : super(key: key);
+  HomePage2({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Counter myCounter = BlocProvider.of<Counter>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text("BLOC PROVIDER"),
@@ -20,7 +25,11 @@ class HomePage2 extends StatelessWidget {
                 color: Colors.yellow,
                 borderRadius: BorderRadius.circular(12),
                 child: InkWell(
-                  child: Container(
+                  onTap: () {
+                    myCounter.decrement();
+                  },
+                  borderRadius: BorderRadius.circular(12),
+                  child: const SizedBox(
                     width: 70,
                     height: 100,
                     child: Icon(
@@ -30,17 +39,16 @@ class HomePage2 extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                width: 200,
-                height: 100,
-                color: Colors.black,
-                child: Text("0"),
-              ),
+              DataWidget(),
               Material(
                 color: Colors.yellow,
                 borderRadius: BorderRadius.circular(12),
                 child: InkWell(
-                  child: Container(
+                  onTap: () {
+                    myCounter.increment();
+                  },
+                  borderRadius: BorderRadius.circular(12),
+                  child: const SizedBox(
                     width: 70,
                     height: 100,
                     child: Icon(

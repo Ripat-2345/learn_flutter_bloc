@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learn_flutter_bloc/bloc/counter.dart';
+import 'package:learn_flutter_bloc/pages/other/other_page.dart';
 
 import 'data_widget.dart';
 
@@ -61,6 +62,21 @@ class HomePage2 extends StatelessWidget {
             ],
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return const OtherPage();
+              },
+            ),
+          );
+        },
+        child: const Icon(
+          Icons.next_plan,
+        ),
       ),
     );
   }
